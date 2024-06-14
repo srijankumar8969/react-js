@@ -5,19 +5,19 @@ function Login() {
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
 
-    const {setUser} = useContext(UserContext)
+    const {setUser} = useContext(UserContext)  //we get the access of the container we can add or use the data in the container
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        setUser({username, password})
+        setUser({username, password}) //we add some values to the container
     }
-
   return (
     <div>
         <h2>Login</h2>
         <input 
         type="text"
         value={username}
+            
         onChange={(e) => setUsername(e.target.value)}
         placeholder='Username'
         />
