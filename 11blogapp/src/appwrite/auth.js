@@ -1,21 +1,21 @@
 // start with appwrite auth service
 import conf from "../conf/conf.js"
-import { Client, Account, ID } from "appwrite";
+import { Client, Account, ID } from "appwrite"; //client Account and its ID get imported these things are useful in directly communicatiing to the database
 
 export class AuthService {
-    client = new Client();
+    client = new Client();  //this is declared globally so that its access is present everywhere
     account;
 
     constructor(){
         this.client
-        .setEndpoint(conf.appwriteUrl)
-        .setProject(conf.appwriteProjectId)
-        this.account = new Account(this.client)
+        .setEndpoint(conf.appwriteUrl);
+        .setProject(conf.appwriteProjectId);
+        this.account = new Account(this.client);
     }
 
     async createAccount({email, password, name}){
         try {
-            const userAccount = await this.account.create(ID.unique(), email, password, name)
+            const userAccount = await this.account.create(ID.unique(), email, password, name);//behind the scene the account will get created with unique id , email password andd name
             if (userAccount) {
                 return this.login({email, password})
             } else {
@@ -25,6 +25,7 @@ export class AuthService {
             throw error
         }
     }
+    
     async login({email, password}){
         try {
             return await this.account.createEmailSession(email, password)
@@ -32,6 +33,7 @@ export class AuthService {
             throw error
         }
     }
+    
     async getCurrentUser(){
         try {
             return await this.account.get()
