@@ -1,7 +1,6 @@
 // start with appwrite auth service
 import conf from "../conf/conf.js"
-import { Client, Account, ID } from "appwrite"; //client Account and its ID get imported these things are useful in directly communicatiing to the database
-
+import { Client, Account, ID } from "appwrite"; //client Account and its ID get imported these things are useful in directly creating the account.
 export class AuthService {
     client = new Client();  //this is declared globally so that its access is present everywhere
     account;
