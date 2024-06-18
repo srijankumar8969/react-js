@@ -3,9 +3,8 @@ import authSlice from "./authSlice"
 
 const store = configureStore({
     reducer: {
-        auth: authSlice,
-
+        auth: authSlice,  //reducer is simply a js object and in this way we can pass as much key value pairs as we want
     }
 })
 
-export default store
+export default store;
