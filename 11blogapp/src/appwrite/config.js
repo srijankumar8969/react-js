@@ -8,7 +8,7 @@ import { Client, Databases, Storage, Query, ID } from "appwrite";
 export class Service {
     client = new Client()
     databases;
-    bucket;
+    bucket;  //folders in appwrite are called as buckets
 
     constructor(){
         this.client.setEndpoint(conf.appwriteUrl)
@@ -26,7 +26,7 @@ export class Service {
         }
     }
 
-    async getPosts(queries = [Query.equal("status", "active")] ){
+    async getPosts(queries = [Query.equal("status", "active")] ){ //the queries need to be passed as array //like [Query.equal('title', ['Avatar', 'Lord of the Rings']), Query.greaterThan('year', 1999) ]
         try {
             return await this.databases.listDocuments(conf.appwriteDatabaseId, conf.appwriteCollectionId, queries)
         } catch (error) {
