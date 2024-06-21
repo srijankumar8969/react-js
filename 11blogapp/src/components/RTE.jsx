@@ -2,8 +2,9 @@ import React from 'react'
 import {Controller} from "react-hook-form"
 import {Editor} from "@tinymce/tinymce-react"
 
+//a text editor in react is used to give the user the access to write the post in ehich ever manner they want and thus 
 
-function RTE({
+function RTE({   //try kar ke dekhna ki kya RTE hi likhna jaruri hai
     name, control, label, defaultValue = ""
 }) {
   return (
