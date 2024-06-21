@@ -12,7 +12,7 @@ import {useNavigate} from "react-router-dom"
 export default function PostForm({post}){
     const {register, handleSubmit, watch, setValue, control, getValues} = useForm({
         defaultValues: {
-            tittle: post?.title || "",
+            tittle: post?.title || "",  //conditionally extract this from the post //this ?
             slug: post?.slug || "",
             content: post?.content || "",
             status: post?.status || "active"
