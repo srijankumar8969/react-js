@@ -1,15 +1,14 @@
 import React, {useEffect, useState} from 'react'
 import { Link, useNavigate, useParams} from "react-router-dom"
-
 import appwriteService from "../appwrite/config"
 import Button from "../components/Button"
 import Container from "../components/container/Container"
-import parse from "html-react-parser"
+import parse from "html-react-parser"   //this will help to parse the html code coming from RTE inpot.
 import {useSelector } from "react-redux"
 
 function Post() {
   const [post, setPost] = useState(null)
-  const {slug} = useParams()
+  const {slug} = useParams()  // isko pata kaise hai ki slug kya hai // this is possible if it takes access of the complete navigate.
   const navigate = useNavigate()
   const userData = useSelector((state) => state.auth.userData)
   const isAuthor = post && userData ? post.userId === userData.$id : false
