@@ -6,7 +6,7 @@ import {logout } from "../../store/authSlice.js"
 function LogoutBtn() {
     const dispatch = useDispatch()
 
-    const lougoutHandler = () => {
+    const lougoutHandler = () => {  //user ko appwrite ke help se current session ko delete karo and then state kp bhi update kardo jo ki sirf userdata ko and uske status ko rakhta hai
         authService.logout().then(() => {
             dispatch(logout());
         })
