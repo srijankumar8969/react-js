@@ -1,14 +1,10 @@
-
-
-
 import conf from "../conf/conf"
 import { Client, Databases, Storage, Query, ID } from "appwrite";
-
 
 export class Service {
     client = new Client()
     databases;
-    bucket;  //folders in appwrite are called as buckets
+    bucket;      //folders in appwrite are called as buckets where we can store files such as images which cant be stored in the database
 
     constructor(){
         this.client.setEndpoint(conf.appwriteUrl)
@@ -16,25 +12,7 @@ export class Service {
         this.databases = new Databases(this.client)
         this.bucket = new Storage(this.client)
     }
-
-    async getPost(slug){
-        try {
-            return await this.databases.getDocument(conf.appwriteDatabaseId, conf.appwriteCollectionId, slug)
-        } catch (error) {
-            console.log("Appwrite service :: getPost() :: ", error);
-            return false
-        }
-    }
-
-    async getPosts(queries = [Query.equal("status", "active")] ){ //the queries need to be passed as array //like [Query.equal('title', ['Avatar', 'Lord of the Rings']), Query.greaterThan('year', 1999) ]
-        try {
-            return await this.databases.listDocuments(conf.appwriteDatabaseId, conf.appwriteCollectionId, queries)
-        } catch (error) {
-            console.log("Appwrite service :: getPosts() :: ", error);
-            return false
-        }
-    }
-
+        
     async createPost({title, slug, content, featuredImage, status, userId}){
         try {
             return await this.databases.createDocument(
@@ -50,6 +28,31 @@ export class Service {
             return false
         }
     }
+
+    async getPost(slug){  //slug is nothing but an identfier of the particular post
+        try {
+            return await this.databases.getDocument(
+                conf.appwriteDatabaseId,
+                conf.appwriteCollectionId,
+                slug)
+        } catch (error) {
+            console.log("Appwrite service :: getPost() :: ", error);
+            return false
+        }
+    }
+//what issue i saw here in the getposts is that the queries nood to get convetted into an array of particular format and then it will be transferred for the query
+    async getPosts(queries = [Query.equal("status", "active")] ){ //the queries need to be passed as array //like [Query.equal('title', ['Avatar', 'Lord of the Rings']), Query.greaterThan('year', 1999) ]
+        try {
+            return await this.databases.listDocuments(
+                conf.appwriteDatabaseId,
+                conf.appwriteCollectionId,
+                queries)
+        } catch (error) {
+            console.log("Appwrite service :: getPosts() :: ", error);
+            return false
+        }
+    }
+
 
     async updatePost(slug, {title, content, featuredImage, status}){
         try {
@@ -100,8 +103,7 @@ export class Service {
         try {
             return await this.bucket.deleteFile(
                 conf.appwriteBucketId,
-                fileId
-                
+                fileId     
             )
         } catch (error) {
             console.log("Appwrite service :: deleteFile() :: ", error);
@@ -116,7 +118,6 @@ export class Service {
         ).href
     }
 }
-
 
 const service = new Service()
 export default service;
