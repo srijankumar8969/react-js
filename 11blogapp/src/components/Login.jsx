@@ -55,7 +55,6 @@ function Login() {
                             type="email"
                             {...register("email", {
                                 required: true,
-                                
                             })}
                         />
                         <Input
