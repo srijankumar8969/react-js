@@ -11,7 +11,7 @@ import Github, {githubInfoLoader} from './components/Github/Github.jsx'
 
 const router = createBrowserRouter(  //routes sirf create hua hai yaha and the whole thing is when we create route then we can use the route to render that element within it
   createRoutesFromElements(
-    <Route path='/' element={<Layout />}>
+    <Route path='/' element={<Layout />}> //since layout yaha par ek segemnt banaya hua hai by using outlet means aab jo iske children hain wo simply iske ander aajayenge
       <Route path='' element={<Home />}/>
       <Route path='about' element={<About />} />
       <Route path='user/' element={<User />} >
