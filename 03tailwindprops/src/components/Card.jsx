@@ -1,6 +1,6 @@
 import React from 'react'
 
-function Card({username = " HC ", post = "Not assigned yet"}) {
+function Card({username = " HC ", post = "Not assigned yet"}) {  //props ke ander jo bhi hai usko directly destructure kiya ja sata hai and thus in this way we can get them by destructuring and the name should as what has been sent from the parent. Also we can get the whole object as prop and then extract everyting from the object using dot operator
     //console.log(props);
   return (
     <div>
