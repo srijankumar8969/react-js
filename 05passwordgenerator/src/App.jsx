@@ -22,17 +22,13 @@ function App() {
       const char = Math.floor(Math.random() * str.length + 1)
       pass += str.charAt(char)
     }
-
     setPassword(pass)
-
   }, [length, numberAllowed, charAllowed])
 
   const copyPasswordToClipboard = () => {
     window.navigator.clipboard.writeText(password)
-    passwordRef.current?.select()
-    
+    passwordRef.current?.select()  //if there is something inside the passwordreg.current the select it
   }
-
 
   useEffect(()=>{
     generatePassword()
