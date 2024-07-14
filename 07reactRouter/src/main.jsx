@@ -9,7 +9,7 @@ import About from './components/About/About.jsx'
 import User from './components/User/User.jsx'
 import Github, {githubInfoLoader} from './components/Github/Github.jsx'
 
-const router = createBrowserRouter(
+const router = createBrowserRouter(  //routes sirf create hua hai yaha and the whole thing is when we create route then we can use the route to render that element within it
   createRoutesFromElements(
     <Route path='/' element={<Layout />}>
       <Route path='' element={<Home />}/>
