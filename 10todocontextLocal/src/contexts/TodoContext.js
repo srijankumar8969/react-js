@@ -1,7 +1,6 @@
 import {createContext, useContext} from "react"
 
-
-export const TodoContext = createContext({
+export const TodoContext = createContext({  //we never provide the definations of the functions or anything in the TodoContext
     todos: [
         {
             id: 1,
