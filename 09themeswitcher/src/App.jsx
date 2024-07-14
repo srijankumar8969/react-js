@@ -8,11 +8,11 @@ function App() {
   const [themeMode, setThemeMode] = useState('light')
 
   const darkTheme = () => {
-    setThemeMode('dark')
+    setThemeMode('dark');
   }
 
   const lightTheme = () => {
-    setThemeMode('light')
+    setThemeMode('light');
   }
 
   useEffect(() => {
