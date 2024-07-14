@@ -18,7 +18,8 @@ const router = createBrowserRouter(  //routes sirf create hua hai yaha and the w
         <Route path=':userid' element={<User />} />
       </Route>
       <Route 
-      loader={githubInfoLoader}
+      loader={githubInfoLoader}  //loader is used to load an information before the link is clicked here just the reference of the function is passed calling will happen automatically
+        inside the component the loader information can be useed simply by using useloader hook
       path='github' 
       element={<Github />} />
       <Route path='*' element={<div>Not Found</div>} />
