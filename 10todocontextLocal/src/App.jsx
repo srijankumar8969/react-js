@@ -34,11 +34,11 @@ function App() {
     if (todos && todos.length > 0) {
       setTodos(todos)
     }
-  }, [])
+  }, [])  //whenever this page mounts this will get runned 
 
   useEffect(() => {
     localStorage.setItem("todos", JSON.stringify(todos))
-  }, [todos])
+  }, [todos]) //whenever todos change this will get runned
 
   return (
     <TodoProvider value={{todos, addTodo, updateTodo, deleteTodo, toggleComplete}}>
