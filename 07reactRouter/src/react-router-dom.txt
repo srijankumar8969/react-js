@@ -1,0 +1,4 @@
+basic theory ->
+React is a single page application framework and thus we can display only a single page a single time thus we use router to navigate between different pages which means that at different time different pages will be shown.
+Create an outlet, and difenent elemet will be replaced there at diffrent links.
+Link diffrent element with specific urls and
